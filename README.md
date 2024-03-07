@@ -1,4 +1,4 @@
-pystarport is like a [cosmos starport](https://github.com/tendermint/starport)
+pyswastart is like a [cosmos starport](https://github.com/tendermint/starport)
 without the scaffolding feature. it's mainly used for development and testing. It's developed for the Crypto.org Chain, but
 it can also be used for any cosmos-sdk based projects.
 
@@ -43,10 +43,10 @@ In the `genesis` section you can override any genesis configuration with the sam
 
 ```
 NAME
-    pystarport serve - prepare and start a devnet from scatch
+    pyswastart serve - prepare and start a devnet from scatch
 
 SYNOPSIS
-    pystarport serve <flags>
+    pyswastart serve <flags>
 
 DESCRIPTION
     prepare and start a devnet from scatch
@@ -73,7 +73,7 @@ FLAGS
 ## Port rules
 
 The rules to calculate service ports based on base port is defined in the
-[`ports.py`](https://github.com/crypto-org-chain/chain-main/blob/master/pystarport/pystarport/ports.py) module.
+[`ports.py`](https://github.com/crypto-org-chain/chain-main/blob/master/pyswastart/pyswastart/ports.py) module.
 
 For example, with default base port `26650`, the url of api servers of the nodes would be:
 
@@ -87,14 +87,14 @@ For example, with default base port `26650`, the url of api servers of the nodes
 
 ## Supervisor
 
-`pystarport` embeded a [supervisor](http://supervisord.org/) to manage processes of multiple nodes, you can use
-`pystarport supervisorctl` to manage the processes:
+`pyswastart` embeded a [supervisor](http://supervisord.org/) to manage processes of multiple nodes, you can use
+`pyswastart supervisorctl` to manage the processes:
 
 ```
-$ pystarport supervisorctl status
+$ pyswastart supervisorctl status
 node0                            RUNNING   pid 35210, uptime 0:00:29
 node1                            RUNNING   pid 35211, uptime 0:00:29
-$ pystarport supervisorctl help
+$ pyswastart supervisorctl help
 
 default commands (type help <topic>):
 =====================================
@@ -106,7 +106,7 @@ clear  maintail  quit  reread  signal    stop    version
 Or enter an interactive shell:
 
 ```
-$ pystarport supervisorctl
+$ pyswastart supervisorctl
 node0                            RUNNING   pid 35210, uptime 0:01:53
 node1                            RUNNING   pid 35211, uptime 0:01:53
 supervisor>
@@ -115,25 +115,25 @@ supervisor>
 ## Cli
 
 After started the chain, you can use `chain-maind` cli directly, there are also some wrapper commands provided by
-`pystarport cli`. It understands the directory structure and port rules, also assuming `keyring-backend=test`, and there
+`pyswastart cli`. It understands the directory structure and port rules, also assuming `keyring-backend=test`, and there
 are shortcuts for commonly used commands, so arguments are shorter.
 
 ```
-$ pystarport cli - --help
+$ pyswastart cli - --help
 ...
 ```
 
 ## Transaction Bot
 
-A simple transaction bot that works for cluster created by pystarport as well as a local node
+A simple transaction bot that works for cluster created by pyswastart as well as a local node
 
 Copy and modify `bot.yaml.sample` to `bot.yaml` with your desired bot configurations.
 
-### If you are running on a pystarport created cluster:
+### If you are running on a pyswastart created cluster:
 1. Make sure you have provide the `node` for each job in the `bot.yaml`
 2. Run the command
 ```
-$ pystarport bot --chain-id=[cluster_chain_id] - start
+$ pyswastart bot --chain-id=[cluster_chain_id] - start
 ```
 
 ### If you are running on a local node
@@ -158,7 +158,7 @@ validators:
     hostname: node1
 ```
 
-`pystarport init --gen_compose_file` will also generate a `docker-compose.yml` file for you.
+`pyswastart init --gen_compose_file` will also generate a `docker-compose.yml` file for you.
 
 ## IBC
 
@@ -214,7 +214,7 @@ With following commands to setup ibc, you are ready to play with ibc functionali
 
 ```
 # spawn the devnets
-pystarport serve --config ibc.yaml
+pyswastart serve --config ibc.yaml
 # setup ibc channel
 hermes -c data/relayer.toml create channel ibc-0 ibc-1 --port-a transfer --port-b transfer
 # start relayer process
