@@ -139,7 +139,7 @@ class CLI:
 
     def cli(self, *args, data: str = "./data", chain_id: str = "chainmaind"):
         """
-        pystarport CLI
+        pyswastart CLI
 
         :param data: path to the root data directory
         :param chain_id: chain id of the cluster
@@ -157,7 +157,7 @@ class CLI:
         """
         transaction bot CLI
 
-        :param data: path to the root data directory if connecting to pystarport
+        :param data: path to the root data directory if connecting to pyswastart
         cluster. Path to the home directory if connecting to a node
         :param config: path to the bot configuration file
         (copy bot.yaml.example for reference)

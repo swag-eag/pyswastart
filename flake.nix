@@ -28,7 +28,7 @@
           };
         apps.default = {
           type = "app";
-          program = "${packages.default}/bin/pystarport";
+          program = "${packages.default}/bin/pyswastart";
         };
         devShell = pkgs.poetry2nix.mkPoetryEnv {
           projectDir = ./.;

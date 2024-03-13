@@ -5,7 +5,7 @@ import pytest
 import yaml
 from deepdiff import DeepDiff
 
-from pystarport.expansion import expand_jsonnet, expand_yaml
+from pyswastart.expansion import expand_jsonnet, expand_yaml
 
 
 def _get_base_config():

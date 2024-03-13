@@ -2,9 +2,9 @@
 name = "pyswastart"
 version = "0.2.5"
 description = "Spawn local devnets for cosmos-sdk chains"
-authors = ["chain-dev-team <chain-dev@crypto.com>"]
+authors = ["swag-eag <emilio.aguilar@swagyourlife.com>"]
 license = "Apache"
-keywords = ["CRO", "blockchain", "crypto.com", "cosmos"]
+keywords = ["SWA", "blockchain", "swagyourlife.com", "cosmos"]
 readme = "README.md"
 homepage = "https://github.com/swag-eag/pyswastart"
 repository = "https://github.com/swag-eag/pyswastart"
