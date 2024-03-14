@@ -4,10 +4,11 @@ from pathlib import Path
 
 import fire
 
-from .app import IMAGE, SUPERVISOR_CONFIG_FILE
-from .bot import BotCLI, BotClusterCLI
+from .app import SUPERVISOR_CONFIG_FILE
+# , IMAGE
+# from .bot import BotCLI, BotClusterCLI
 from .cluster import ClusterCLI, init_cluster, start_cluster, start_tail_logs_thread
-from .cosmoscli import CosmosCLI
+# from .cosmoscli import CosmosCLI
 from .utils import build_cli_args, interact
 
 
@@ -63,7 +64,7 @@ class CLI:
         config: str = "./config.yaml",
         base_port: int = 26650,
         dotenv: str = None,
-        image: str = IMAGE,
+        # image: str = IMAGE,
         gen_compose_file: bool = False,
         no_remove: bool = False,
     ):
@@ -84,7 +85,7 @@ class CLI:
             config,
             base_port,
             dotenv,
-            image,
+            # image,
             self.cmd,
             gen_compose_file,
             no_remove=no_remove,
@@ -146,32 +147,32 @@ class CLI:
         """
         return ClusterCLI(Path(data), chain_id=chain_id, cmd=self.cmd)
 
-    def bot(
-        self,
-        *args,
-        data: str = "./data",
-        config: str = "./bot.yaml",
-        chain_id: str = "chainmaind",
-        node_rpc: str = None,
-    ):
-        """
-        transaction bot CLI
-
-        :param data: path to the root data directory if connecting to pyswastart
-        cluster. Path to the home directory if connecting to a node
-        :param config: path to the bot configuration file
-        (copy bot.yaml.example for reference)
-        :param chain_id: chain id of the cluster
-        :param node_rpc: custom Tendermint RPC endpoint to the node
-        """
-        data_path = Path(data)
-        config_path = Path(config)
-        if node_rpc is None:
-            cluster_cli = ClusterCLI(data_path, chain_id=chain_id, cmd=self.cmd)
-            return BotClusterCLI(config_path, cluster_cli)
-        else:
-            cosmos_cli = CosmosCLI(data_path, node_rpc, cmd=self.cmd)
-            return BotCLI(config_path, cosmos_cli)
+#    def bot(
+#        self,
+#        *args,
+#        data: str = "./data",
+#        config: str = "./bot.yaml",
+#        chain_id: str = "chainmaind",
+#        node_rpc: str = None,
+#    ):
+#        """
+#        transaction bot CLI
+#
+#        :param data: path to the root data directory if connecting to pyswastart
+#        cluster. Path to the home directory if connecting to a node
+#        :param config: path to the bot configuration file
+#        (copy bot.yaml.example for reference)
+#        :param chain_id: chain id of the cluster
+#        :param node_rpc: custom Tendermint RPC endpoint to the node
+#        """
+#        data_path = Path(data)
+#        config_path = Path(config)
+#        if node_rpc is None:
+#            cluster_cli = ClusterCLI(data_path, chain_id=chain_id, cmd=self.cmd)
+#            return BotClusterCLI(config_path, cluster_cli)
+#        else:
+#            cosmos_cli = CosmosCLI(data_path, node_rpc, cmd=self.cmd)
+#            return BotCLI(config_path, cosmos_cli)
 
 
 def main():

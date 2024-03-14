@@ -16,16 +16,17 @@ import durations
 import jsonmerge
 import multitail2
 import tomlkit
-import yaml
+# import yaml
 from dateutil.parser import isoparse
 from supervisor import xmlrpc
 from supervisor.compat import xmlrpclib
 
 from . import ports
-from .app import CHAIN, IMAGE, SUPERVISOR_CONFIG_FILE
+from .app import CHAIN, SUPERVISOR_CONFIG_FILE
+# , IMAGE
 from .cosmoscli import ChainCommand, CosmosCLI, ModuleAccount, module_address
 from .expansion import expand_jsonnet, expand_yaml
-from .ledger import ZEMU_BUTTON_PORT, ZEMU_HOST
+# from .ledger import ZEMU_BUTTON_PORT, ZEMU_HOST
 from .utils import format_doc_string, interact, write_ini
 
 COMMON_PROG_OPTIONS = {
@@ -49,8 +50,8 @@ class ClusterCLI:
         data,
         chain_id="chainmaind",
         cmd=None,
-        zemu_address=ZEMU_HOST,
-        zemu_button_port=ZEMU_BUTTON_PORT,
+        zemu_address=None,  # ZEMU_HOST,
+        zemu_button_port=None  # ZEMU_BUTTON_PORT,
     ):
         self.data_root = data
         self.zemu_address = zemu_address
@@ -688,7 +689,7 @@ def init_devnet(
     data_dir,
     config,
     base_port,
-    image=IMAGE,
+    # image=IMAGE,
     cmd=None,
     gen_compose_file=False,
 ):
@@ -907,11 +908,11 @@ def init_devnet(
             ),
         )
 
-    if gen_compose_file:
-        yaml.dump(
-            docker_compose_yml(cmd, config["validators"], data_dir, image),
-            (data_dir / "docker-compose.yml").open("w"),
-        )
+    # if gen_compose_file:
+    #     yaml.dump(
+    #         docker_compose_yml(cmd, config["validators"], data_dir, image),
+    #         (data_dir / "docker-compose.yml").open("w"),
+    #     )
 
 
 def relayer_chain_config(data_dir, chain, relayer_chains_config):
@@ -946,7 +947,7 @@ def init_cluster(
     config_path,
     base_port,
     dotenv=None,
-    image=IMAGE,
+    # image=IMAGE,
     cmd=None,
     gen_compose_file=False,
 ):
@@ -965,7 +966,9 @@ def init_cluster(
     for chain in chains:
         (data_dir / chain["chain_id"]).mkdir()
         init_devnet(
-            data_dir / chain["chain_id"], chain, base_port, image, cmd, gen_compose_file
+            # data_dir / chain["chain_id"], chain, base_port, image, cmd
+            # , gen_compose_file
+            data_dir / chain["chain_id"], chain, base_port, cmd, gen_compose_file
         )
     with (data_dir / SUPERVISOR_CONFIG_FILE).open("w") as fp:
         write_ini(

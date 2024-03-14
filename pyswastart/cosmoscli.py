@@ -9,7 +9,7 @@ import bech32
 from dateutil.parser import isoparse
 
 from .app import CHAIN
-from .ledger import ZEMU_BUTTON_PORT, ZEMU_HOST, LedgerButton
+# from .ledger import ZEMU_BUTTON_PORT, ZEMU_HOST, LedgerButton
 from .utils import build_cli_args_safe, format_doc_string, interact
 
 
@@ -55,8 +55,8 @@ class CosmosCLI:
         node_rpc,
         chain_id=None,
         cmd=None,
-        zemu_address=ZEMU_HOST,
-        zemu_button_port=ZEMU_BUTTON_PORT,
+        zemu_address=None,  # =ZEMU_HOST,
+        zemu_button_port=None,  # =ZEMU_BUTTON_PORT,
     ):
         self.data_dir = data_dir
         if chain_id is None:
@@ -67,7 +67,7 @@ class CosmosCLI:
             self.chain_id = chain_id
         self.node_rpc = node_rpc
         self.raw = ChainCommand(cmd)
-        self.leger_button = LedgerButton(zemu_address, zemu_button_port)
+        # self.leger_button = LedgerButton(zemu_address, zemu_button_port)
         self.output = None
         self.error = None
 
