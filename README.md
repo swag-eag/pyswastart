@@ -73,7 +73,7 @@ FLAGS
 ## Port rules
 
 The rules to calculate service ports based on base port is defined in the
-[`ports.py`](https://github.com/crypto-org-chain/chain-main/blob/master/pyswastart/pyswastart/ports.py) module.
+[`ports.py`](https://github.com/swag-eag/chain-main/blob/master/pyswastart/pyswastart/ports.py) module.
 
 For example, with default base port `26650`, the url of api servers of the nodes would be:
 

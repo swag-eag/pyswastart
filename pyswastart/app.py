@@ -5,7 +5,7 @@ if not CHAIN:
     CHAIN = os.environ.get("CHAIN_MAIND", "chain-maind")
 '''
 IMAGE =
- "docker.pkg.github.com/crypto-org-chain/chain-main/chain-main-pystarport
+ "docker.pkg.github.com/swag-eag/chain-main/chain-main-pystarport
 :latest"
 '''
 
