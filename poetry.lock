@@ -165,7 +165,7 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "importlib-resources"
-version = "6.3.0"
+version = "6.4.0"
 description = "Read resources from Python packages"
 category = "main"
 optional = false
@@ -176,7 +176,7 @@ zipp = {version = ">=3.1.0", markers = "python_version < \"3.10\""}
 
 [package.extras]
 docs = ["sphinx (>=3.5)", "sphinx (<7.2.5)", "jaraco.packaging (>=9.3)", "rst.linker (>=1.9)", "furo", "sphinx-lint", "jaraco.tidelift (>=1.4)"]
-testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=2.2)", "pytest-ruff (>=0.2.1)", "zipp (>=3.17)", "jaraco.collections", "pytest-mypy"]
+testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=2.2)", "pytest-ruff (>=0.2.1)", "zipp (>=3.17)", "jaraco.test (>=5.4)", "pytest-mypy"]
 
 [[package]]
 name = "iniconfig"
@@ -433,7 +433,7 @@ toml = ["toml"]
 
 [[package]]
 name = "referencing"
-version = "0.33.0"
+version = "0.34.0"
 description = "JSON Referencing + Python"
 category = "main"
 optional = false
@@ -560,7 +560,7 @@ test = ["websockets"]
 
 [[package]]
 name = "zipp"
-version = "3.18.0"
+version = "3.18.1"
 description = "Backport of pathlib-compatible object wrapper for zip files"
 category = "main"
 optional = false
